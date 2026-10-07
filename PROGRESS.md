@@ -1,93 +1,58 @@
-# 📊 Terraform Learning Progress Tracker
+# 📊 Terraform Zero to Hero - Learning Tracker
 
-Use this checklist to track your learning journey from fundamentals to production-grade Infrastructure as Code (IaC). Mark items as completed by changing `[ ]` to `[x]`.
-
----
-
-## 🟢 Level 1: Foundations & Core Concepts
-- [ ] Understand Infrastructure as Code (IaC) principles & declarative vs imperative
-- [ ] Install Terraform CLI & verify installation (`terraform -version`)
-- [ ] Understand HCL (HashiCorp Configuration Language) syntax and blocks
-- [ ] Master the 4 core workflow steps:
-  - [ ] `terraform init` (providers, backend, modules)
-  - [ ] `terraform plan` (dry run / execution preview)
-  - [ ] `terraform apply` (provisioning infrastructure)
-  - [ ] `terraform destroy` (tearing down resources)
-- [ ] Understand `.terraform` folder and the dependency lock file (`.terraform.lock.hcl`)
-- [ ] Run zero-cost local labs using `hashicorp/local` and `hashicorp/random`
+Track your progress through Abhishek Veeramalla's [Terraform Zero to Hero YouTube Playlist](https://youtube.com/playlist?list=PLdpzxOOAlwvI0O4PeKVV1-yJoX2AqIWuf). Mark items complete by replacing `[ ]` with `[x]`.
 
 ---
 
-## 🟡 Level 2: Variables, Outputs & Expressions
-- [ ] Declare and use input variables (`string`, `number`, `bool`)
-- [ ] Use complex variable types (`list`, `map`, `object`)
-- [ ] Write custom variable validation rules (`validation` block)
-- [ ] Understand variable precedence (CLI `-var`, `terraform.tfvars`, `*.auto.tfvars`, environment variables `TF_VAR_*`)
-- [ ] Define and query `output` values
-- [ ] Protect sensitive information using `sensitive = true`
-- [ ] Master HCL functions (`jsonencode`, `lookup`, `contains`, `length`, `format`, `timestamp`)
+### [ ] Day 1: Getting Started with Terraform
+- [ ] Understand Infrastructure as Code (IaC) & Declarative model
+- [ ] Install Terraform CLI & configure AWS credentials
+- [ ] Understand Terraform Core Architecture & Providers
+- [ ] Master core commands: `terraform init`, `plan`, `apply`, `destroy`
+- [ ] Provision first EC2 instance on AWS
+- [ ] Inspect generated `terraform.tfstate` file
 
----
+### [ ] Day 2: Advanced Terraform Configuration
+- [ ] Create and configure input variables (`variables.tf`)
+- [ ] Work with variable types (`string`, `number`, `list`, `map`)
+- [ ] Use AWS Data Sources (`data.aws_ami`) for dynamic image lookup
+- [ ] Implement conditional logic (`condition ? val1 : val2`)
+- [ ] Format and extract outputs (`outputs.tf`)
+- [ ] Use `terraform.tfvars` for clean parameter management
 
-## 🟠 Level 3: Cloud Provisioning with AWS
-- [ ] Configure AWS CLI with IAM credentials (`aws configure`)
-- [ ] Understand Terraform AWS Provider and provider configurations
-- [ ] Provision AWS S3 bucket with secure defaults:
-  - [ ] S3 Bucket Versioning
-  - [ ] S3 Server-Side Encryption (SSE-S3 / KMS)
-  - [ ] S3 Public Access Block
-- [ ] Apply resource tagging strategies (`default_tags`)
-- [ ] Provision network resources (VPC, Subnets, Internet Gateway, Route Tables)
-- [ ] Provision compute resources (EC2 instances, Security Groups, Key Pairs)
+### [ ] Day 3: Building Reusable Infrastructure with Modules
+- [ ] Understand Root Module vs Child Module architecture
+- [ ] Build custom reusable module (`modules/ec2_instance`)
+- [ ] Pass variables into modules and capture outputs
+- [ ] Explore the public Terraform Registry for verified modules
 
----
+### [ ] Day 4: State Management & Remote Backend
+- [ ] Understand state file importance and hazards of committing state to Git
+- [ ] Provision remote backend infrastructure (AWS S3 + DynamoDB)
+- [ ] Configure `backend "s3"` block in Terraform
+- [ ] Understand state locking with DynamoDB
+- [ ] Master state CLI commands (`terraform state list`, `show`, `pull`)
 
-## 🔵 Level 4: Reusable Modules & Architecture
-- [ ] Understand Root Module vs Child Module
-- [ ] Build a reusable child module from scratch
-- [ ] Pass inputs and expose outputs across modules
-- [ ] Instantiate multiple environments using the same module
-- [ ] Leverage verified modules from the official Terraform Registry
-- [ ] Understand module versioning and source types (local paths, Git repos, registry)
+### [ ] Day 5: Provisioners & Connection Blocks
+- [ ] Understand provisioners and connection types
+- [ ] Use `remote-exec` to configure Nginx over SSH
+- [ ] Use `local-exec` to capture outputs locally
+- [ ] Learn why `user_data` and Cloud-init are preferred over provisioners
 
----
+### [ ] Day 6: Environment Isolation with Workspaces
+- [ ] Understand Terraform CLI workspaces
+- [ ] Create and toggle workspaces (`dev`, `stage`, `prod`)
+- [ ] Manage dynamic environment configurations using `terraform.workspace`
+- [ ] Understand workspace state separation in S3
 
-## 🟣 Level 5: State Management & Backends
-- [ ] Deep dive into `terraform.tfstate` structure
-- [ ] Understand why state must never be stored in version control
-- [ ] Set up Remote State backend in AWS S3
-- [ ] Enable State Locking with AWS DynamoDB
-- [ ] Practice state migration from local to remote backend
-- [ ] Execute state management commands:
-  - [ ] `terraform state list`
-  - [ ] `terraform state show`
-  - [ ] `terraform state mv`
-  - [ ] `terraform state rm`
-  - [ ] `terraform refresh`
-  - [ ] `terraform force-unlock`
+### [ ] Day 7: Security & Secrets Management
+- [ ] Understand security risks of sensitive data in IaC
+- [ ] Integrate AWS Secrets Manager / HashiCorp Vault
+- [ ] Protect sensitive variables with `sensitive = true`
+- [ ] Run static security scans using `tfsec` / Checkov
 
----
-
-## 🔴 Level 6: Advanced Multi-Environment & Lifecycle
-- [ ] Compare Terraform Workspaces vs Directory-based isolation
-- [ ] Create and toggle workspaces (`terraform workspace new`, `select`)
-- [ ] Implement resource lifecycle meta-arguments:
-  - [ ] `create_before_destroy`
-  - [ ] `prevent_destroy`
-  - [ ] `ignore_changes`
-- [ ] Use meta-arguments:
-  - [ ] `count`
-  - [ ] `for_each`
-  - [ ] `depends_on`
-- [ ] Master Terraform Data Sources to reference existing infrastructure
-
----
-
-## 🛡️ Level 7: Production Best Practices & Security
-- [ ] Enforce automated formatting with `terraform fmt -recursive`
-- [ ] Code validation with `terraform validate`
-- [ ] Static analysis & linting with **TFLint**
-- [ ] Infrastructure security scanning with **tfsec** or **Checkov**
-- [ ] Cost estimation with **Infracost**
-- [ ] Setup pre-commit hooks to block secrets and bad formatting
-- [ ] Build a CI/CD pipeline (GitHub Actions / GitLab CI) for Terraform Plan & Apply
+### [ ] Day 8: Real-World Capstone Project
+- [ ] Provision full custom VPC, Subnet, Route Table & Internet Gateway
+- [ ] Configure Security Groups for HTTP and SSH
+- [ ] Deploy an automated Nginx web server using `user_data`
+- [ ] Validate end-to-end web connectivity

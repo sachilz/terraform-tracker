@@ -1,0 +1,9 @@
+output "public_ip_address" {
+  description = "Public IP address of the launched EC2 instance"
+  value       = aws_instance.example.public_ip
+}
+
+output "instance_id" {
+  description = "The ID of the EC2 instance"
+  value       = aws_instance.example.id
+}

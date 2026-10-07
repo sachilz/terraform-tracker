@@ -1,48 +1,45 @@
-# 🚀 Terraform Tracker & Learning Roadmap
+# 🚀 Terraform Zero to Hero - Course Tracker & Practice Labs
 
-Welcome to your hands-on **Terraform Learning & Practice Repository**. This workspace is structured as a step-by-step curriculum with ready-to-run labs—from zero-cost local experiments to production-grade cloud architectures on AWS.
+Companion repository for **Abhishek Veeramalla's** [Terraform Zero to Hero YouTube Course](https://youtube.com/playlist?list=PLdpzxOOAlwvI0O4PeKVV1-yJoX2AqIWuf).
+
+This repository contains organized, step-by-step code and notes for every single day in the course.
 
 ---
 
-## 🧭 Repository Structure
+## 📅 Course Syllabus & Labs
 
-Each directory represents a self-contained learning module with working code and its own detailed guide:
-
-| Module | Topic | Provider | Description |
+| Day | Topic | Key Concepts | Lab Link |
 |---|---|---|---|
-| [`01-basics-local-provider/`](./01-basics-local-provider) | Core Workflow | `local`, `random` | `init`, `plan`, `apply`, `destroy` without cloud costs or credentials |
-| [`02-variables-and-outputs/`](./02-variables-and-outputs) | Variables & Validation | `local` | Data types, validation blocks, `tfvars`, sensitive outputs |
-| [`03-aws-fundamentals/`](./03-aws-fundamentals) | Cloud IaC | `aws` | Secure S3 bucket with versioning, encryption, and public access blocks |
-| [`04-modules/`](./04-modules) | Modular Architecture | `aws` | Reusable child modules (static website) and DRY code design |
-| [`05-state-and-backends/`](./05-state-and-backends) | State & Collaboration | `aws` (S3 + DynamoDB) | Remote backend storage, state locking, and state CLI commands |
-| [`06-environments-and-workspaces/`](./06-environments-and-workspaces) | Multi-Tenancy | `local` | Terraform Workspaces vs Directory isolation for Dev/Staging/Prod |
-| [`07-best-practices-and-tools/`](./07-best-practices-and-tools) | Production Readiness | Tooling | `terraform fmt`, TFLint, tfsec, Infracost, and CI/CD security |
+| **Day 1** | Getting Started with Terraform | IaC, Core Architecture, First AWS EC2, `init`, `plan`, `apply`, `destroy` | [👉 Day-1](./Day-1/README.md) |
+| **Day 2** | Advanced Configuration | Variables, Types, Data Sources (`aws_ami`), Conditionals, Built-in Functions | [👉 Day-2](./Day-2/README.md) |
+| **Day 3** | Reusable Modules | Root vs Child Modules, DRY Architecture, Module Inputs/Outputs | [👉 Day-3](./Day-3/README.md) |
+| **Day 4** | State Management & Remote Backend | `terraform.tfstate`, S3 Remote Backend, DynamoDB State Locking | [👉 Day-4](./Day-4/README.md) |
+| **Day 5** | Provisioners & Connection Blocks | `remote-exec`, `local-exec`, SSH Keys, and why `user_data` is preferred | [👉 Day-5](./Day-5/README.md) |
+| **Day 6** | Managing Environments with Workspaces | CLI Workspaces (`dev`, `stage`, `prod`), `terraform.workspace` lookups | [👉 Day-6](./Day-6/README.md) |
+| **Day 7** | Security & Secrets Management | AWS Secrets Manager, Sensitive Variables, `tfsec` static scanning | [👉 Day-7](./Day-7/README.md) |
+| **Day 8** | Real-World Capstone Project | Full VPC, Subnets, Internet Gateway, Security Groups & Automated Nginx | [👉 Day-8](./Day-8/README.md) |
 
-👉 **Track your learning milestones in [`PROGRESS.md`](./PROGRESS.md)!**
+👉 **Track your learning milestones in [PROGRESS.md](./PROGRESS.md)!**
 
 ---
 
-## 🛠️ Prerequisites & Setup (Windows)
+## 🛠️ Setup Instructions (Windows)
 
 ### 1. Install Terraform CLI
-Open **PowerShell as Administrator** and install Terraform via Windows Package Manager:
+Run in **PowerShell (Run as Administrator)**:
 ```powershell
 winget install HashiCorp.Terraform
 ```
-*Alternatively, install via Chocolatey: `choco install terraform`*
-
-Restart your terminal and verify:
+Restart your PowerShell window and verify:
 ```powershell
 terraform -version
 ```
 
-### 2. Configure AWS CLI (For Cloud Labs 03-05)
-AWS CLI is already available on your system (`aws-cli/2.x`). Configure your IAM access keys:
+### 2. Configure AWS CLI
+Configure your IAM credentials:
 ```powershell
 aws configure
-# Enter your AWS Access Key ID, Secret Key, and default region (e.g. us-east-1)
 ```
-
 Verify authentication:
 ```powershell
 aws sts get-caller-identity
@@ -50,47 +47,24 @@ aws sts get-caller-identity
 
 ---
 
-## ⚡ Daily Terraform Cheat Sheet
+## ⚡ Daily Terraform Commands Cheat Sheet
 
-### Core Lifecycle
 ```bash
-terraform init                  # Initialize directory & download providers
-terraform fmt -recursive        # Format all code to standard HCL style
-terraform validate              # Check syntax and configuration validity
-terraform plan                  # Preview planned infrastructure changes
-terraform apply                 # Apply changes to reach desired state
-terraform apply -auto-approve   # Apply without interactive prompt
-terraform destroy               # Tear down all resources managed by state
+# Core workflow
+terraform init                  # Download providers and configure backends
+terraform fmt -recursive        # Auto-format all .tf code
+terraform validate              # Verify configuration syntax
+terraform plan                  # Preview pending changes
+terraform apply                 # Apply changes to cloud
+terraform destroy               # Tear down all resources
+
+# State Management
+terraform state list            # List resources recorded in state
+terraform state show <res>      # Inspect specific resource details
+terraform state pull            # Read remote state file
+
+# Workspaces
+terraform workspace list        # Show all workspaces
+terraform workspace new dev     # Create and switch to workspace 'dev'
+terraform workspace select dev  # Switch active workspace
 ```
-
-### Variables & Outputs
-```bash
-terraform plan -var="environment=prod"              # Pass variable via CLI
-terraform plan -var-file="staging.tfvars"            # Use custom variables file
-terraform output                                     # View all defined outputs
-terraform output -json app_summary                  # Query output as JSON
-```
-
-### State Management
-```bash
-terraform state list                                 # List all tracked resources
-terraform state show <resource_name>                 # Show resource attributes
-terraform state mv <source> <destination>            # Move/rename resource in state
-terraform state rm <resource_name>                   # Remove resource from state
-```
-
-### Workspaces
-```bash
-terraform workspace list                             # View all workspaces
-terraform workspace new dev                          # Create and switch to workspace
-terraform workspace select dev                       # Switch active workspace
-terraform workspace show                             # Print current active workspace
-```
-
----
-
-## 🔒 Security Best Practices
-- **Never commit state files**: State contains secrets in plaintext. State files (`*.tfstate`) are already protected in [`.gitignore`](./.gitignore).
-- **Never commit production `.tfvars`**: Use `*.example.tfvars` templates for Git.
-- **Lock provider versions**: Always pin provider versions using `~>` pessimistic operator in `required_providers`.
-- **Enforce Least Privilege**: Run Terraform with an IAM role scoped specifically for the resources being managed.
