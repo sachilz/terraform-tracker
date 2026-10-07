@@ -1,0 +1,17 @@
+project_name     = "cloud-analytics"
+environment      = "staging"
+app_port         = 8080
+features_enabled = ["logging", "monitoring", "tracing", "caching"]
+
+tags = {
+  ManagedBy   = "Terraform"
+  Owner       = "Sachintha"
+  CostCenter  = "Engineering-101"
+}
+
+database_config = {
+  db_name  = "analytics_prod"
+  max_conn = 100
+}
+
+db_password = "ChangeThisInYourOwnTfvars"

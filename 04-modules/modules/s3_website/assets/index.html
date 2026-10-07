@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Terraform Tracker - Static Site</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+    .card {
+      background: #1e293b;
+      padding: 2.5rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      border: 1px solid #334155;
+      max-width: 480px;
+      text-align: center;
+    }
+    h1 { color: #38bdf8; margin-top: 0; }
+    p { color: #94a3b8; line-height: 1.6; }
+    .badge {
+      display: inline-block;
+      background: #0284c7;
+      color: #fff;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="badge">Terraform Module Managed</div>
+    <h1>Hello from Terraform!</h1>
+    <p>This static website was created and deployed using a reusable Terraform child module.</p>
+  </div>
+</body>
+</html>
