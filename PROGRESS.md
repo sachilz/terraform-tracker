@@ -12,13 +12,14 @@ Track your progress through Abhishek Veeramalla's [Terraform Zero to Hero YouTub
 - [ ] Provision first EC2 instance on AWS
 - [ ] Inspect generated `terraform.tfstate` file
 
-### [ ] Day 2: Advanced Terraform Configuration
-- [ ] Create and configure input variables (`variables.tf`)
-- [ ] Work with variable types (`string`, `number`, `list`, `map`)
-- [ ] Use AWS Data Sources (`data.aws_ami`) for dynamic image lookup
-- [ ] Implement conditional logic (`condition ? val1 : val2`)
-- [ ] Format and extract outputs (`outputs.tf`)
-- [ ] Use `terraform.tfvars` for clean parameter management
+### [ ] Day 2: Terraform Providers & Advanced Configuration
+- [x] Understand Terraform Providers (Architecture, RPC, Types, Sources)
+- [x] Master `required_providers` vs `provider` block
+- [x] Practice Provider Aliases (`alias`) for multi-region architectures
+- [x] Understand `.terraform.lock.hcl` dependency lock file & checksums
+- [x] Safe authentication methods (env vars, AWS profiles vs avoiding hardcoded keys)
+- [ ] Create and configure input variables (`variables.tf`) & outputs (`outputs.tf`)
+
 
 ### [ ] Day 3: Building Reusable Infrastructure with Modules
 - [ ] Understand Root Module vs Child Module architecture

@@ -1,9 +1,0 @@
-aws_region    = "us-east-1"
-instance_type = "t2.micro"
-environment   = "dev"
-
-tags = {
-  Owner     = "Abhishek-Student"
-  ManagedBy = "Terraform-Day-2"
-  Project   = "Terraform-Zero-To-Hero"
-}

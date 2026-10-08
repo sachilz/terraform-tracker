@@ -11,7 +11,7 @@ This repository contains organized, step-by-step code and notes for every single
 | Day | Topic | Key Concepts | Lab Link |
 |---|---|---|---|
 | **Day 1** | Getting Started with Terraform | IaC, Core Architecture, First AWS EC2, `init`, `plan`, `apply`, `destroy` | [👉 Day-1](./Day-1/README.md) |
-| **Day 2** | Advanced Configuration | Variables, Types, Data Sources (`aws_ami`), Conditionals, Built-in Functions | [👉 Day-2](./Day-2/README.md) |
+| **Day 2** | Terraform Providers & Configuration | Provider Architecture, `required_providers`, Aliases (`alias`), Authentication, Lock File | [👉 Day-2](./Day-2/README.md) |
 | **Day 3** | Reusable Modules | Root vs Child Modules, DRY Architecture, Module Inputs/Outputs | [👉 Day-3](./Day-3/README.md) |
 | **Day 4** | State Management & Remote Backend | `terraform.tfstate`, S3 Remote Backend, DynamoDB State Locking | [👉 Day-4](./Day-4/README.md) |
 | **Day 5** | Provisioners & Connection Blocks | `remote-exec`, `local-exec`, SSH Keys, and why `user_data` is preferred | [👉 Day-5](./Day-5/README.md) |
